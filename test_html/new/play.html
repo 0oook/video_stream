@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+    <title>Test Video Server</title>
+    <script type="text/javascript" src="./dist/wfs.js"></script>
+</head>
+<div class="layer">
+    <div>
+        <video id="video1" width="480" height="270" muted autoplay="autoplay"></video>
+    </div>
+    <div>
+        <video id="video2" width="480" height="270" muted autoplay="autoplay" ></video>
+    </div>
+    <div>
+        <video id="video3" width="480" height="270" muted autoplay="autoplay"></video>
+    </div>
+    <div>
+        <video id="video4" width="480" height="270" muted autoplay="autoplay"></video>
+    </div>
+
+    <script>
+        // const web_socket = "ws://127.0.0.1:9002";
+        // const web_socket = "ws://127.0.0.1:9002";
+        const web_socket = "ws://192.168.215.187:9002";
+        window.onload = function () {
+            if (Wfs.isSupported()) {
+                // new Wfs().attachMedia(document.getElementById("video1"),
+                //     {
+                //         "address": "rtsp://admin:admin12345@192.168.111.233:554",
+                //         "cam_id": 25
+                //     }, "H264Raw", "ws://192.168.215.187:9002");
+
+
+                new Wfs().attachMedia(document.getElementById("video1"),
+                    {
+                        "address": "rtsp://admin:admin12345@192.168.111.6:555/h264/ch1/main/av_stream",
+                        "cam_id": "gjlajgfdsigjksdlml"
+                    }, "H264Raw", web_socket);
+
+                new Wfs().attachMedia(document.getElementById("video2"),
+                    {
+                        "address": "rtsp://admin:admin12345@192.168.111.6:555/h264/ch2/main/av_stream",
+                        "cam_id": "fmaklsdfjlsaj"
+                    }, "H264Raw", web_socket);
+            }
+        }
+    </script>
+
+</div>

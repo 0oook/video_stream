@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<head>
+    <title>Test Video Server</title>
+    <script type="text/javascript" src="./dist/wfs.js"></script>
+</head>
+<div class="layer">
+    <div>
+        <video id="video1" width="480" height="270" muted autoplay="autoplay"></video>
+    </div>
+    <div>
+        <video id="video2" width="480" height="270" muted autoplay="autoplay"></video>
+    </div>
+    <div>
+        <video id="video3" width="480" height="270" muted autoplay="autoplay"></video>
+    </div>
+    <div>
+        <video id="video4" width="480" height="270" muted autoplay="autoplay"></video>
+    </div>
+
+    <script>
+        window.onload = function () {
+            // const web_socket = "ws://127.0.0.1:9002";
+            const web_socket = "ws://192.168.215.187:9002";
+
+            // const cam_id_1 = "kdackads><,.;'[]{}{;;'1~!@#$%^&*()_)+=-098coiscios";
+            const cam_id_1 = "2";
+            const cam_address_1 = "rtsp://admin:admin12345@192.168.111.233:555/h264/ch1/main/av_stream";
+            // const cam_address_1 = "rtsp://admin:admin12345@192.168.111.230:555";
+            // const cam_address_1 = "http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/gear2/prog_index.m3u8";
+            // const cam_address_1 = "rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov";
+            // const cam_address_1 = "https://yuledy.helanzuida.com/20200614/5886_ca3c7b91/index.m3u8";
+            // const cam_address_1 = "/Users/nvidia/Projects/HikSdkDemo/static/video/ch0003_00010000034000006_35.mp4";
+
+            const cam_id_2 = "1";
+            const cam_address_2 = "rtsp://admin:admin12345@192.168.111.233:555/h264/ch2/main/av_stream";
+            // const cam_address_2 = "http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/gear2/prog_index.m3u8";
+            // const cam_address_2 = "/Users/nvidia/Projects/HikSdkDemo/static/video/long.mp4";
+
+            if (Wfs.isSupported()) {
+                (new Wfs(cam_id_1)).attachMedia(document.getElementById("video1"), {
+                    "address": cam_address_1,
+                    "cam_id": cam_id_1
+                }, "H264Raw", web_socket);
+
+                (new Wfs(cam_id_2)).attachMedia(document.getElementById("video2"), {
+                    "address": cam_address_2,
+                    "cam_id": cam_id_2
+                }, "H264Raw", web_socket);
+                //
+                // (new Wfs(3)).attachMedia(document.getElementById("video3"), {
+                //     "address": "rtsp://admin:admin12345@192.168.111.6:554",
+                //     "cam_id": 3
+                // });
+
+                // (new Wfs(2)).attachMedia(document.getElementById("video2"), {
+                //     "address": "rtsp://admin:admin@192.168.111.233:556/stream1",
+                //     "cam_id": 2
+                // });
+                //
+                // (new Wfs(3)).attachMedia(document.getElementById("video3"), {
+                //     "address": "rtsp://admin:admin12345@192.168.111.233:555/webcam",
+                //     "cam_id": 3
+                // });
+                //
+                // (new Wfs(4)).attachMedia(document.getElementById("video4"), {
+                //     "address": "rtsp://admin:admin12345@192.168.111.233:554",
+                //     "cam_id": 4
+                // });
+            }
+        }
+    </script>
+
+</div>
